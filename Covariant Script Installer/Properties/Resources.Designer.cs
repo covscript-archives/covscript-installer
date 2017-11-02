@@ -69,5 +69,25 @@ namespace Covariant_Script_Installer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找类似                     GNU AFFERO GENERAL PUBLIC LICENSE
+        ///                       Version 3, 19 November 2007
+        ///
+        /// Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
+        /// Everyone is permitted to copy and distribute verbatim copies
+        /// of this license document, but changing it is not allowed.
+        ///
+        ///                            Preamble
+        ///
+        ///  The GNU Affero General Public License is a free, copyleft license for
+        ///software and other kinds of works, specifically designed to ensure
+        ///cooperation with the commun [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string license {
+            get {
+                return ResourceManager.GetString("license", resourceCulture);
+            }
+        }
     }
 }
