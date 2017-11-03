@@ -41,6 +41,7 @@ namespace Covariant_Script_Installer
             checkBox3.Checked = false;
             checkBox4.Checked = false;
             checkBox5.Checked = false;
+            checkBox6.Checked = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace Covariant_Script_Installer
             checkBox3.Checked = true;
             checkBox4.Checked = true;
             checkBox5.Checked = true;
+            checkBox6.Checked = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -75,7 +77,6 @@ namespace Covariant_Script_Installer
         public void install()
         {
             Form3 form = new Form3();
-            form.Show();
             Installation inst = new Installation(form.label1, form.progressBar1);
             inst.installation_path = textBox1.Text;
             List < Pair < string, string>> field = new List<Pair<string, string>>();
@@ -86,19 +87,22 @@ namespace Covariant_Script_Installer
             if (checkBox3.Checked)
                 field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/regex.cse", "\\Imports\\regex.cse"));
             if (checkBox5.Checked)
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
+            if (checkBox6.Checked)
                 field.Add(new Pair<string, string>("http://ldc.atd3.cn/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
+                form.Show();
                 inst.install();
-                if (checkBox6.Checked)
+                if (checkBox7.Checked)
                 {
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
                     Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\Bin", EnvironmentVariableTarget.User);
                 }
-                if(checkBox7.Checked)
+                if(checkBox8.Checked)
                 {
                     if (checkBox2.Checked)
                         create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "Start CovScript GUI", "");
