@@ -15,8 +15,7 @@ namespace Covariant_Script_Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            parent.Close();
-            // TODO
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

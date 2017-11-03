@@ -89,6 +89,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LIcense";
             this.ResumeLayout(false);
             this.PerformLayout();

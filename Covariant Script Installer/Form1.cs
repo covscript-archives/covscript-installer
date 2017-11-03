@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Covariant_Script_Installer
@@ -19,7 +21,12 @@ namespace Covariant_Script_Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            (new Form2(this)).ShowDialog();
+            if ((new Form2(this)).ShowDialog() == DialogResult.OK)
+            {
+                this.Hide();
+                this.install();
+                this.Show();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,6 +56,58 @@ namespace Covariant_Script_Installer
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 textBox1.Text = folderBrowserDialog1.SelectedPath;
+        }
+
+        private void create_shotcut(string path,string link,string description,string args)
+        {
+            File.Delete(link);
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(link);
+            shortcut.TargetPath = path;
+            shortcut.Arguments = args;
+            shortcut.Description = description;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(path);
+            shortcut.IconLocation = path;
+            shortcut.WindowStyle = 1;
+            shortcut.Save();
+        }
+
+        public void install()
+        {
+            Form3 form = new Form3();
+            form.Show();
+            Installation inst = new Installation(form.label1, form.progressBar1);
+            inst.installation_path = textBox1.Text;
+            List < pair < string, string>> field = new List<pair<string, string>>();
+            if (checkBox1.Checked)
+                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
+            if (checkBox2.Checked)
+                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
+            if (checkBox3.Checked)
+                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+            if (checkBox4.Checked)
+                field.Add(new pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Import\\darwin.cse"));
+            if (checkBox5.Checked)
+                field.Add(new pair<string, string>("http://ldc.atd3.cn/sqlite.cse", "\\Import\\sqlite.cse"));
+            inst.installation_field = field;
+            try
+            {
+                inst.install();
+                Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Import", EnvironmentVariableTarget.User);
+                if (checkBox6.Checked)
+                    Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\Bin", EnvironmentVariableTarget.User);
+                if (checkBox2.Checked)
+                    create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "Start CovScript GUI","");
+                if (checkBox3.Checked)
+                    create_shotcut(inst.installation_path + "\\Bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "Start CovScript REPL","--wait-before-exit --import-path "+inst.installation_path+"\\Imports --log-path "+inst.installation_path+"\\Logs\\cs_repl_runtime.log");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Installation Failed", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Installation Finished", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            form.Close();
         }
     }
 }

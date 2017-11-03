@@ -44,10 +44,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -164,7 +164,6 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoCheck = false;
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -221,14 +220,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Settings";
             // 
-            // label3
+            // button5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Installation Path";
+            this.button5.Location = new System.Drawing.Point(228, 53);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Browse";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(216, 21);
+            this.textBox1.TabIndex = 2;
             // 
             // checkBox6
             // 
@@ -240,22 +247,14 @@
             this.checkBox6.Text = "Add CovScript to PATH";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // label3
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 21);
-            this.textBox1.TabIndex = 2;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(228, 53);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Browse";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Installation Path";
             // 
             // folderBrowserDialog1
             // 
