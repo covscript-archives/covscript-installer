@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace Covariant_Script_Installer
 {
-    class pair<_KeyT, _ValueT>
+    class Pair<_KeyT, _ValueT>
     {
         public _KeyT first;
         public _ValueT second;
-        public pair(_KeyT key,_ValueT value)
+        public Pair(_KeyT key,_ValueT value)
         {
             first = key;
             second = value;
@@ -24,11 +24,14 @@ namespace Covariant_Script_Installer
             label = l;
             prog = p;
         }
-        public List<pair<string, string>> installation_field;
+        public List<Pair<string, string>> installation_field;
         public string installation_path;
         public void install()
         {
-            foreach(pair<string,string> info in installation_field)
+            Directory.CreateDirectory(installation_path + "\\Bin");
+            Directory.CreateDirectory(installation_path + "\\Imports");
+            Directory.CreateDirectory(installation_path + "\\Logs");
+            foreach(Pair<string,string> info in installation_field)
             {
                 DownloadFile(info.first, installation_path + info.second);
             }

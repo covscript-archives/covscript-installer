@@ -78,28 +78,33 @@ namespace Covariant_Script_Installer
             form.Show();
             Installation inst = new Installation(form.label1, form.progressBar1);
             inst.installation_path = textBox1.Text;
-            List < pair < string, string>> field = new List<pair<string, string>>();
+            List < Pair < string, string>> field = new List<Pair<string, string>>();
             if (checkBox1.Checked)
-                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
             if (checkBox2.Checked)
-                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
             if (checkBox3.Checked)
-                field.Add(new pair<string, string>("http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Import\\darwin.cse"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
             if (checkBox5.Checked)
-                field.Add(new pair<string, string>("http://ldc.atd3.cn/sqlite.cse", "\\Import\\sqlite.cse"));
+                field.Add(new Pair<string, string>("http://ldc.atd3.cn/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
                 inst.install();
-                Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Import", EnvironmentVariableTarget.User);
                 if (checkBox6.Checked)
+                {
+                    Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
                     Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\Bin", EnvironmentVariableTarget.User);
-                if (checkBox2.Checked)
-                    create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "Start CovScript GUI","");
-                if (checkBox3.Checked)
-                    create_shotcut(inst.installation_path + "\\Bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "Start CovScript REPL","--wait-before-exit --import-path "+inst.installation_path+"\\Imports --log-path "+inst.installation_path+"\\Logs\\cs_repl_runtime.log");
+                }
+                if(checkBox7.Checked)
+                {
+                    if (checkBox2.Checked)
+                        create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "Start CovScript GUI", "");
+                    if (checkBox3.Checked)
+                        create_shotcut(inst.installation_path + "\\Bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "Start CovScript REPL", "--wait-before-exit --import-path \"" + inst.installation_path + "\\Imports\" --log-path \"" + inst.installation_path + "\\Logs\\cs_repl_runtime.log\"");
+                }
             }
             catch (Exception)
             {
