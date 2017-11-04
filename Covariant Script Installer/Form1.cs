@@ -101,7 +101,18 @@ namespace Covariant_Script_Installer
                 if (checkBox7.Checked)
                 {
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
-                    Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\Bin", EnvironmentVariableTarget.User);
+                    bool exist = false;
+                    string value = inst.installation_path + "\\Bin";
+                    foreach(string val in Environment.GetEnvironmentVariable("PATH",EnvironmentVariableTarget.User).Split(';'))
+                    {
+                        if(val==value)
+                        {
+                            exist = true;
+                            break;
+                        }
+                    }
+                    if (!exist)
+                        Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\Bin", EnvironmentVariableTarget.User);
                 }
                 if(checkBox8.Checked)
                 {
