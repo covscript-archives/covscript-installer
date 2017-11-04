@@ -81,22 +81,23 @@ namespace Covariant_Script_Installer
             inst.installation_path = textBox1.Text;
             List < Pair < string, string>> field = new List<Pair<string, string>>();
             if (checkBox1.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/cs_x64.exe" : "http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
             if (checkBox2.Checked)
                 field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
             if (checkBox3.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/cs_repl_x64.exe" : "http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/regex.cse", "\\Imports\\regex.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/regex_x64.cse" : "http://ldc.atd3.cn/regex.cse", "\\Imports\\regex.cse"));
             if (checkBox5.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/darwin_x64.cse" : "http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
             if (checkBox6.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/sqlite.cse", "\\Imports\\sqlite.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/sqlite_x64.cse" : "http://ldc.atd3.cn/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
                 form.Show();
                 inst.install();
+                File.Copy(Application.ExecutablePath, inst.installation_path + "\\Bin\\cs_inst.exe", true);
                 if (checkBox7.Checked)
                 {
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
@@ -104,18 +105,19 @@ namespace Covariant_Script_Installer
                 }
                 if(checkBox8.Checked)
                 {
+                    create_shotcut(inst.installation_path + "\\Bin\\cs_inst.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript Installer.lnk", "CovScript安装程序", "");
                     if (checkBox2.Checked)
-                        create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "Start CovScript GUI", "");
+                        create_shotcut(inst.installation_path + "\\Bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "CovScript GUI", "");
                     if (checkBox3.Checked)
-                        create_shotcut(inst.installation_path + "\\Bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "Start CovScript REPL", "--wait-before-exit --import-path \"" + inst.installation_path + "\\Imports\" --log-path \"" + inst.installation_path + "\\Logs\\cs_repl_runtime.log\"");
+                        create_shotcut(inst.installation_path + "\\Bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\Imports\" --log-path \"" + inst.installation_path + "\\Logs\\cs_repl_runtime.log\"");
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Installation Failed", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("安装失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MessageBox.Show("Installation Finished", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("安装完毕", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
             form.Close();
         }
     }

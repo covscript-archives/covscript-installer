@@ -61,7 +61,7 @@ namespace Covariant_Script_Installer
                         prog.Value = (int)totalDownloadedByte;
                     osize = st.Read(by, 0, by.Length);
                     percent = totalDownloadedByte / (double)totalBytes * 100;
-                    label.Text = "Installing... " + ((int)percent).ToString() + "%";
+                    label.Text = "安装中..." + ((int)percent).ToString() + "%";
                     Application.DoEvents();
                 }
                 so.Close();
@@ -69,12 +69,12 @@ namespace Covariant_Script_Installer
             }
             catch (Exception e)
             {
-                label.Text = "Error";
+                label.Text = "错误";
                 if (prog != null)
                     prog.Value = 0;
                 throw e;
             }
-            label.Text = "Done";
+            label.Text = "就绪";
             if (prog != null)
                 prog.Value = 0;
         }

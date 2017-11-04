@@ -99,7 +99,7 @@
             this.groupBox1.Size = new System.Drawing.Size(314, 90);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Please select the function to be installed";
+            this.groupBox1.Text = "组件";
             // 
             // button4
             // 
@@ -107,7 +107,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 6;
-            this.button4.Text = "Select All";
+            this.button4.Text = "全选";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -117,7 +117,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Default";
+            this.button3.Text = "默认";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -128,7 +128,7 @@
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(120, 16);
             this.checkBox6.TabIndex = 4;
-            this.checkBox6.Text = "SQLite Extension";
+            this.checkBox6.Text = "数据库扩展(SQLite)";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox5
@@ -138,7 +138,7 @@
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(120, 16);
             this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "Darwin Extension";
+            this.checkBox5.Text = "图形扩展(Darwin)";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -148,7 +148,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(120, 16);
             this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "REPL Environment";
+            this.checkBox3.Text = "交互式解释器(REPL)";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -160,7 +160,7 @@
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(78, 16);
             this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "GUI Build";
+            this.checkBox2.Text = "CovScript GUI";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
@@ -173,7 +173,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(120, 16);
             this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Basic Components";
+            this.checkBox1.Text = "基础组件";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -182,7 +182,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Install";
+            this.button1.Text = "安装";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -192,7 +192,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Exit";
+            this.button2.Text = "退出";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -220,7 +220,7 @@
             this.groupBox2.Size = new System.Drawing.Size(314, 110);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Settings";
+            this.groupBox2.Text = "设置";
             // 
             // checkBox8
             // 
@@ -231,7 +231,7 @@
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(210, 16);
             this.checkBox8.TabIndex = 4;
-            this.checkBox8.Text = "Create shortcuts on the desktop";
+            this.checkBox8.Text = "在桌面上创建快捷方式";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -240,7 +240,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 21);
             this.button5.TabIndex = 3;
-            this.button5.Text = "Browse";
+            this.button5.Text = "选择...";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -260,7 +260,7 @@
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(192, 16);
             this.checkBox7.TabIndex = 1;
-            this.checkBox7.Text = "Create environment variables";
+            this.checkBox7.Text = "创建环境变量";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -270,11 +270,11 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Installation Path";
+            this.label3.Text = "安装路径";
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.Description = "Please Select Installation Path";
+            this.folderBrowserDialog1.Description = "请选择安装路径";
             this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // checkBox4
@@ -284,7 +284,7 @@
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(114, 16);
             this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Regex Extension";
+            this.checkBox4.Text = "正则表达式扩展(Regex)";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // Form1

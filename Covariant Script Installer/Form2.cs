@@ -11,17 +11,23 @@ namespace Covariant_Script_Installer
             InitializeComponent();
             parent = form;
             textBox1.Text = Properties.Resources.license;
+            textBox1.Select(0, 0);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = checkBox1.Checked;
         }
     }
 }
