@@ -77,21 +77,23 @@ namespace Covariant_Script_Installer
         public void install()
         {
             Form3 form = new Form3();
-            Installation inst = new Installation(form.label1, form.progressBar1);
-            inst.installation_path = textBox1.Text;
+            Installation inst = new Installation(form.label1, form.progressBar1)
+            {
+                installation_path = textBox1.Text
+            };
             List < Pair < string, string>> field = new List<Pair<string, string>>();
             if (checkBox1.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs.exe" : "http://ldc.atd3.cn/build_x86/bin/cs.exe", "\\Bin\\cs.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs.exe" : "http://ldc.atd3.cn/build/bin/cs.exe", "\\Bin\\cs.exe"));
             if (checkBox2.Checked)
                 field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
             if (checkBox3.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs_repl.exe" : "http://ldc.atd3.cn/build_x86/bin/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs_repl.exe" : "http://ldc.atd3.cn/build/bin/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/regex.cse" : "http://ldc.atd3.cn/build_x86/imports/regex.cse", "\\Imports\\regex.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/regex.cse" : "http://ldc.atd3.cn/build/imports/regex.cse", "\\Imports\\regex.cse"));
             if (checkBox5.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/darwin.cse" : "http://ldc.atd3.cn/build_x86/imports/darwin.cse", "\\Imports\\darwin.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/darwin.cse" : "http://ldc.atd3.cn/build/imports/darwin.cse", "\\Imports\\darwin.cse"));
             if (checkBox6.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/sqlite.cse" : "http://ldc.atd3.cn/build_x86/imports/sqlite.cse", "\\Imports\\sqlite.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/sqlite.cse" : "http://ldc.atd3.cn/build/imports/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
@@ -103,12 +105,16 @@ namespace Covariant_Script_Installer
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
                     bool exist = false;
                     string value = inst.installation_path + "\\Bin";
-                    foreach(string val in Environment.GetEnvironmentVariable("PATH",EnvironmentVariableTarget.User).Split(';'))
+                    string env = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
+                    if (env != null)
                     {
-                        if(val==value)
+                        foreach (string val in env.Split(';'))
                         {
-                            exist = true;
-                            break;
+                            if (val == value)
+                            {
+                                exist = true;
+                                break;
+                            }
                         }
                     }
                     if (!exist)
