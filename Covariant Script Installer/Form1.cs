@@ -81,17 +81,17 @@ namespace Covariant_Script_Installer
             inst.installation_path = textBox1.Text;
             List < Pair < string, string>> field = new List<Pair<string, string>>();
             if (checkBox1.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/cs_x64.exe" : "http://ldc.atd3.cn/cs.exe", "\\Bin\\cs.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs.exe" : "http://ldc.atd3.cn/build_x86/bin/cs.exe", "\\Bin\\cs.exe"));
             if (checkBox2.Checked)
                 field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
             if (checkBox3.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/cs_repl_x64.exe" : "http://ldc.atd3.cn/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs_repl.exe" : "http://ldc.atd3.cn/build_x86/bin/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/regex_x64.cse" : "http://ldc.atd3.cn/regex.cse", "\\Imports\\regex.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/regex.cse" : "http://ldc.atd3.cn/build_x86/imports/regex.cse", "\\Imports\\regex.cse"));
             if (checkBox5.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/darwin_x64.cse" : "http://ldc.atd3.cn/darwin.cse", "\\Imports\\darwin.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/darwin.cse" : "http://ldc.atd3.cn/build_x86/imports/darwin.cse", "\\Imports\\darwin.cse"));
             if (checkBox6.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/sqlite_x64.cse" : "http://ldc.atd3.cn/sqlite.cse", "\\Imports\\sqlite.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/sqlite.cse" : "http://ldc.atd3.cn/build_x86/imports/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
