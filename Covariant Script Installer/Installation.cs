@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Covariant_Script_Installer
@@ -18,11 +21,9 @@ namespace Covariant_Script_Installer
     class Installation
     {
         private Label label;
-        private ProgressBar prog;
-        public Installation(Label l,ProgressBar p)
+        public Installation(Label l)
         {
             label = l;
-            prog = p;
         }
         public List<Pair<string, string>> installation_field;
         public string installation_path;
@@ -36,17 +37,19 @@ namespace Covariant_Script_Installer
                 DownloadFile(info.first, installation_path + info.second);
             }
         }
+        public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        {
+            return true;
+        }
         private void DownloadFile(string URL, string filename)
         {
             File.Delete(filename);
-            double percent = 0;
+            label.Text = "安装中...";
             try
             {
-                System.Net.HttpWebRequest Myrq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(URL);
-                System.Net.HttpWebResponse myrp = (System.Net.HttpWebResponse)Myrq.GetResponse();
-                long totalBytes = myrp.ContentLength;
-                if (prog != null)
-                    prog.Maximum = (int)totalBytes;
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
+                HttpWebRequest Myrq = (HttpWebRequest)WebRequest.Create(URL);
+                HttpWebResponse myrp = (HttpWebResponse)Myrq.GetResponse();
                 Stream st = myrp.GetResponseStream();
                 Stream so = new FileStream(filename, FileMode.Create);
                 long totalDownloadedByte = 0;
@@ -57,12 +60,7 @@ namespace Covariant_Script_Installer
                     totalDownloadedByte = osize + totalDownloadedByte;
                     Application.DoEvents();
                     so.Write(by, 0, osize);
-                    if (prog != null)
-                        prog.Value = (int)totalDownloadedByte;
                     osize = st.Read(by, 0, by.Length);
-                    percent = totalDownloadedByte / (double)totalBytes * 100;
-                    label.Text = "安装中..." + ((int)percent).ToString() + "%";
-                    Application.DoEvents();
                 }
                 so.Close();
                 st.Close();
@@ -70,13 +68,9 @@ namespace Covariant_Script_Installer
             catch (Exception e)
             {
                 label.Text = "错误";
-                if (prog != null)
-                    prog.Value = 0;
                 throw e;
             }
             label.Text = "就绪";
-            if (prog != null)
-                prog.Value = 0;
         }
     }
 }

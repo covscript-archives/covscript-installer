@@ -77,7 +77,7 @@ namespace Covariant_Script_Installer
         public void install()
         {
             Form3 form = new Form3();
-            Installation inst = new Installation(form.label1, form.progressBar1)
+            Installation inst = new Installation(form.label1)
             {
                 installation_path = textBox1.Text
             };
