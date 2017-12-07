@@ -134,6 +134,7 @@ namespace Covariant_Script_Installer
             catch (Exception)
             {
                 MessageBox.Show("安装失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form.Close();
                 return;
             }
             MessageBox.Show("安装完毕", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
