@@ -83,17 +83,17 @@ namespace Covariant_Script_Installer
             };
             List < Pair < string, string>> field = new List<Pair<string, string>>();
             if (checkBox1.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs.exe" : "http://ldc.atd3.cn/build/bin/cs.exe", "\\Bin\\cs.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "https://gitee.com/mikecovlee/covscript-source/raw/master/build_x64/bin/cs.exe" : "https://gitee.com/mikecovlee/covscript-source/raw/master/build/bin/cs.exe", "\\Bin\\cs.exe"));
             if (checkBox2.Checked)
-                field.Add(new Pair<string, string>("http://ldc.atd3.cn/cs_gui.exe", "\\Bin\\cs_gui.exe"));
+                field.Add(new Pair<string, string>("https://gitee.com/mikecovlee/covscript-source/raw/master/cs_gui.exe", "\\Bin\\cs_gui.exe"));
             if (checkBox3.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/bin/cs_repl.exe" : "http://ldc.atd3.cn/build/bin/cs_repl.exe", "\\Bin\\cs_repl.exe"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "https://gitee.com/mikecovlee/covscript-source/raw/master/build_x64/bin/cs_repl.exe" : "https://gitee.com/mikecovlee/covscript-source/raw/master/build/bin/cs_repl.exe", "\\Bin\\cs_repl.exe"));
             if (checkBox4.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/regex.cse" : "http://ldc.atd3.cn/build/imports/regex.cse", "\\Imports\\regex.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "https://gitee.com/mikecovlee/covscript-source/raw/master/build_x64/imports/regex.cse" : "https://gitee.com/mikecovlee/covscript-source/raw/master/build/imports/regex.cse", "\\Imports\\regex.cse"));
             if (checkBox5.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/darwin.cse" : "http://ldc.atd3.cn/build/imports/darwin.cse", "\\Imports\\darwin.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "https://gitee.com/mikecovlee/covscript-source/raw/master/build_x64/imports/darwin.cse" : "https://gitee.com/mikecovlee/covscript-source/raw/master/build/imports/darwin.cse", "\\Imports\\darwin.cse"));
             if (checkBox6.Checked)
-                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "http://ldc.atd3.cn/build_x64/imports/sqlite.cse" : "http://ldc.atd3.cn/build/imports/sqlite.cse", "\\Imports\\sqlite.cse"));
+                field.Add(new Pair<string, string>(Environment.Is64BitOperatingSystem ? "https://gitee.com/mikecovlee/covscript-source/raw/master/build_x64/imports/sqlite.cse" : "https://gitee.com/mikecovlee/covscript-source/raw/master/build/imports/sqlite.cse", "\\Imports\\sqlite.cse"));
             inst.installation_field = field;
             try
             {
