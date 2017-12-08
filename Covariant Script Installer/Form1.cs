@@ -77,7 +77,7 @@ namespace Covariant_Script_Installer
         public void install()
         {
             Form3 form = new Form3();
-            Installation inst = new Installation(form.label1)
+            Installation inst = new Installation(form.label1, form.progressBar1)
             {
                 installation_path = textBox1.Text
             };
@@ -99,9 +99,7 @@ namespace Covariant_Script_Installer
             {
                 form.Show();
                 inst.install();
-                string bin_path = inst.installation_path + "\\Bin\\cs_inst.exe";
-                if (Application.ExecutablePath != bin_path)
-                    File.Copy(Application.ExecutablePath, bin_path, true);
+                File.Copy(Application.ExecutablePath, inst.installation_path + "\\Bin\\cs_inst.exe", true);
                 if (checkBox7.Checked)
                 {
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);

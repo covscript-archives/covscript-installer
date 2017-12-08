@@ -21,9 +21,11 @@ namespace Covariant_Script_Installer
     class Installation
     {
         private Label label;
-        public Installation(Label l)
+        private ProgressBar prog;
+        public Installation(Label l,ProgressBar p)
         {
             label = l;
+            prog = p;
         }
         public List<Pair<string, string>> installation_field;
         public string installation_path;
@@ -32,10 +34,17 @@ namespace Covariant_Script_Installer
             Directory.CreateDirectory(installation_path + "\\Bin");
             Directory.CreateDirectory(installation_path + "\\Imports");
             Directory.CreateDirectory(installation_path + "\\Logs");
+            prog.Maximum = installation_field.Count;
+            prog.Value = 1;
             foreach(Pair<string,string> info in installation_field)
             {
+                label.Text = "安装中(" + prog.Value.ToString() + "/" + prog.Maximum.ToString() + ")...";
                 DownloadFile(info.first, installation_path + info.second);
+                if (prog.Value < prog.Maximum)
+                    ++prog.Value;
+                Application.DoEvents();
             }
+            label.Text = "完成";
         }
         public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
@@ -44,7 +53,6 @@ namespace Covariant_Script_Installer
         private void DownloadFile(string URL, string filename)
         {
             File.Delete(filename);
-            label.Text = "安装中...";
             try
             {
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
@@ -58,7 +66,6 @@ namespace Covariant_Script_Installer
                 while (osize > 0)
                 {
                     totalDownloadedByte = osize + totalDownloadedByte;
-                    Application.DoEvents();
                     so.Write(by, 0, osize);
                     osize = st.Read(by, 0, by.Length);
                 }
@@ -70,7 +77,6 @@ namespace Covariant_Script_Installer
                 label.Text = "错误";
                 throw e;
             }
-            label.Text = "就绪";
         }
     }
 }
