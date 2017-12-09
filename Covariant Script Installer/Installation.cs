@@ -68,6 +68,7 @@ namespace Covariant_Script_Installer
                     totalDownloadedByte = osize + totalDownloadedByte;
                     so.Write(by, 0, osize);
                     osize = st.Read(by, 0, by.Length);
+                    Application.DoEvents();
                 }
                 so.Close();
                 st.Close();
