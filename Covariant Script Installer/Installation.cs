@@ -36,17 +36,9 @@ namespace Covariant_Script_Installer
             Directory.CreateDirectory(installation_path + "\\Imports");
             Directory.CreateDirectory(installation_path + "\\Logs");
             label.Text = "获取组件信息中，请稍候...";
-            string[] bin_urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/bin_x64_urls.txt" : "/bin_x86_urls.txt")).Split(';');
-            foreach (string url in bin_urls)
-            {
-                if (url.Length != 0)
-                {
-                    string[] info = url.Split('@');
-                    installation_field.Add(new Pair<string, string>(info[0], info[1]));
-                }
-            }
-            string[] ext_urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/ext_x64_urls.txt" : "/ext_x86_urls.txt")).Split(';');
-            foreach (string url in ext_urls)
+            Application.DoEvents();
+            string[] urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/x64_urls.txt" : "/x86_urls.txt")).Split(';');
+            foreach (string url in urls)
             {
                 if (url.Length != 0)
                 {

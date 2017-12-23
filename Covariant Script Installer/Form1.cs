@@ -11,7 +11,7 @@ namespace Covariant_Script_Installer
         {
             InitializeComponent();
             textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            textBox2.Text="https://gitee.com/mikecovlee/covscript-source/raw/master";
+            textBox2.Text="http://covariant.cn/cs";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -36,7 +36,7 @@ namespace Covariant_Script_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "https://gitee.com/mikecovlee/covscript-source/raw/master";
+            textBox2.Text = "http://covariant.cn/cs";
         }
 
         private void button5_Click(object sender, EventArgs e)
