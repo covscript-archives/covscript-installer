@@ -40,11 +40,9 @@ namespace Covariant_Script_Installer
             string[] urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/x64_urls.txt" : "/x86_urls.txt")).Split(';');
             foreach (string url in urls)
             {
-                if (url.Length != 0)
-                {
-                    string[] info = url.Split('@');
+                string[] info = url.Split('@');
+                if (info.Length == 2)
                     installation_field.Add(new Pair<string, string>(info[0], info[1]));
-                }
             }
             prog.Maximum = installation_field.Count;
             prog.Value = 1;
