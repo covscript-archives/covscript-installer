@@ -27,13 +27,33 @@ namespace Covariant_Script_Installer
             label = l;
             prog = p;
         }
-        public List<Pair<string, string>> installation_field;
+        public List<Pair<string, string>> installation_field = new List<Pair<string, string>>();
         public string installation_path;
+        public string repo_url;
         public void install()
         {
             Directory.CreateDirectory(installation_path + "\\Bin");
             Directory.CreateDirectory(installation_path + "\\Imports");
             Directory.CreateDirectory(installation_path + "\\Logs");
+            label.Text = "获取组件信息中，请稍候...";
+            string[] bin_urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/bin_x64_urls.txt" : "/bin_x86_urls.txt")).Split(';');
+            foreach (string url in bin_urls)
+            {
+                if (url.Length != 0)
+                {
+                    string[] info = url.Split('@');
+                    installation_field.Add(new Pair<string, string>(info[0], info[1]));
+                }
+            }
+            string[] ext_urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/ext_x64_urls.txt" : "/ext_x86_urls.txt")).Split(';');
+            foreach (string url in ext_urls)
+            {
+                if (url.Length != 0)
+                {
+                    string[] info = url.Split('@');
+                    installation_field.Add(new Pair<string, string>(info[0], info[1]));
+                }
+            }
             prog.Maximum = installation_field.Count;
             prog.Value = 1;
             foreach(Pair<string,string> info in installation_field)
@@ -49,6 +69,22 @@ namespace Covariant_Script_Installer
         public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
             return true;
+        }
+        private string DownloadText(string URL)
+        {
+            try
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
+                HttpWebRequest Myrq = (HttpWebRequest)WebRequest.Create(URL);
+                HttpWebResponse myrp = (HttpWebResponse)Myrq.GetResponse();
+                StreamReader sr = new StreamReader(myrp.GetResponseStream());
+                return sr.ReadToEnd();
+            }
+            catch (Exception e)
+            {
+                label.Text = "错误";
+                throw e;
+            }
         }
         private void DownloadFile(string URL, string filename)
         {

@@ -63,9 +63,9 @@ namespace Covariant_Script_Installer.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap covariant_script_wide {
+        internal static System.Drawing.Bitmap covariant_script {
             get {
-                object obj = ResourceManager.GetObject("covariant_script_wide", resourceCulture);
+                object obj = ResourceManager.GetObject("covariant_script", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
