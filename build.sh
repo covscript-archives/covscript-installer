@@ -17,9 +17,9 @@ cp -rf covscript/include covscript-regex/
 cp -rf covscript/include covscript-darwin/
 cp -rf covscript/include covscript-sqlite/
 cp -rf covscript/include covscript-network/
-start covscript './make.sh'
-start covscript-regex './make.sh'
-start covscript-darwin './make.sh'
-start covscript-sqlite './make.sh'
-start covscript-network './make.sh'
+start covscript 'sh ./make.sh'
+start covscript-regex 'sh ./make.sh'
+start covscript-darwin 'sh ./make.sh'
+start covscript-sqlite 'sh ./make.sh'
+start covscript-network 'sh ./make.sh'
 wait
