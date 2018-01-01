@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -71,6 +72,12 @@ namespace Covariant_Script_Installer
             {
                 form.Show();
                 inst.install();
+                Registry.ClassesRoot.CreateSubKey(".csc").SetValue("", "CovScriptGUI.Code", RegistryValueKind.String);
+                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Code").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\Bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
+                Registry.ClassesRoot.CreateSubKey(".csp").SetValue("", "CovScriptGUI.Package", RegistryValueKind.String);
+                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Package").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\Bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
+                Registry.ClassesRoot.CreateSubKey(".cse").SetValue("", "CovScriptGUI.Extension", RegistryValueKind.String);
+                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Extension").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\Bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
                 if (checkBox7.Checked)
                 {
                     Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\Imports", EnvironmentVariableTarget.User);
