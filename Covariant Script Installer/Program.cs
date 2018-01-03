@@ -21,7 +21,7 @@ namespace Covariant_Script_Installer
             }
             else
             {
-                string daemon_exe_path = "CovScript_Installer[Daemon_Process_" + Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "].exe";
+                string daemon_exe_path = Path.GetTempPath() + "\\CovScript_Installer[Daemon_Process_" + Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "].exe";
                 File.Copy(Application.ExecutablePath, daemon_exe_path, true);
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
