@@ -26,12 +26,13 @@ namespace Covariant_Script_Installer
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
                     UseShellExecute = true,
-                    WorkingDirectory = Environment.CurrentDirectory,
+                    WorkingDirectory = Path.GetTempPath(),
                     FileName = daemon_exe_path,
                     Arguments = "--daemon",
                     Verb = "runas"
                 };
                 Process.Start(startInfo);
+                Environment.Exit(0);
             }
         }
     }
