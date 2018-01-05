@@ -34,9 +34,10 @@ namespace Covariant_Script_Installer
         {
             Directory.Delete(installation_path, true);
             Directory.CreateDirectory(installation_path);
-            Directory.CreateDirectory(installation_path + "\\Bin");
-            Directory.CreateDirectory(installation_path + "\\Imports");
-            Directory.CreateDirectory(installation_path + "\\Logs");
+            Directory.CreateDirectory(installation_path + "\\bin");
+            Directory.CreateDirectory(installation_path + "\\imports");
+            Directory.CreateDirectory(installation_path + "\\logs");
+            Directory.CreateDirectory(installation_path + "\\docs");
             label.Text = "获取组件信息中，请稍候...";
             Application.DoEvents();
             if (!Environment.Is64BitOperatingSystem)
