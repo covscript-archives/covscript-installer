@@ -1,0 +1,7 @@
+Package: covscript
+Version: 1.2.1
+Section: utils
+Priority: optional
+Architecture: i386
+Maintainer: Michael Lee <mikecovlee@163.com>
+Description: Covariant Script Programming Language
