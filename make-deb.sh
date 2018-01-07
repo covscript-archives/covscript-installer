@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ "$#" != "3" ]; then
+    echo "Wrong size of arguments."
+    exit
+fi
+bash ./build.sh $1
+bash ./install.sh
+mkdir -p deb-src
+cd deb-src
+mkdir -p ./$2/DEBIAN
+mkdir -p ./$2/$1/local/bin
+mkdir -p ./$2/$1/share/covscript/imports
+cp -r ../build/bin ./$2/$1/local
+cp -r ../build/imports ./$2/$1/share/covscript
+echo "Package: covscript">>./$2/DEBIAN/control
+echo "Version: $3">>./$2/DEBIAN/control
+echo "Section: utils">>./$2/DEBIAN/control
+echo "Priority: optional">>./$2/DEBIAN/control
+echo "Architecture: $2">>./$2/DEBIAN/control
+echo "Maintainer: Michael Lee <mikecovlee@163.com>">>./$2/DEBIAN/control
+echo "Description: Covariant Script Programming Language">>./$2/DEBIAN/control
+echo >>./$2/DEBIAN/control
+chmod -R 755 ./$2/DEBIAN
+dpkg-deb -b $2 covscript-$3-$2.deb
+rm -rf $2

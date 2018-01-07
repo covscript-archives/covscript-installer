@@ -1,7 +1,6 @@
 #!/bin/bash
-if [ "$#" != "1" ]; then
-    PREFIX="/usr"
-else
+PREFIX="/usr"
+if [ "$#" = "1" ]; then
     PREFIX=$1
 fi
 function start ()
@@ -36,9 +35,9 @@ cp -rf covscript/include covscript-darwin/ &
 cp -rf covscript/include covscript-sqlite/ &
 cp -rf covscript/include covscript-network/ &
 wait
-start covscript 'sh ./make.sh $PREFIX' &
-start covscript-regex 'sh ./make.sh' &
-start covscript-darwin 'sh ./make.sh' &
-start covscript-sqlite 'sh ./make.sh' &
-start covscript-network 'sh ./make.sh' &
+start covscript "bash ./make.sh $PREFIX" &
+start covscript-regex "sh ./make.sh" &
+start covscript-darwin "sh ./make.sh" &
+start covscript-sqlite "sh ./make.sh" &
+start covscript-network "sh ./make.sh" &
 wait
