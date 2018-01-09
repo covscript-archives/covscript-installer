@@ -3,8 +3,6 @@ if [ "$#" != "3" ]; then
     echo "Wrong size of arguments."
     exit
 fi
-bash ./build.sh $1
-bash ./install.sh
 mkdir -p deb-src
 cd deb-src
 mkdir -p ./$2/DEBIAN
