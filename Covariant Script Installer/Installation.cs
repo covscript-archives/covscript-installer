@@ -32,7 +32,8 @@ namespace Covariant_Script_Installer
         public string repo_url;
         public void install()
         {
-            Directory.Delete(installation_path, true);
+            if (Directory.Exists(installation_path))
+                Directory.Delete(installation_path, true);
             Directory.CreateDirectory(installation_path);
             Directory.CreateDirectory(installation_path + "\\bin");
             Directory.CreateDirectory(installation_path + "\\imports");
