@@ -30,9 +30,9 @@ namespace Covariant_Script_Installer
         public List<Pair<string, string>> installation_field = new List<Pair<string, string>>();
         public string installation_path;
         public string repo_url;
-        public void install()
+        public void install(bool clean = false)
         {
-            if (Directory.Exists(installation_path))
+            if (clean && Directory.Exists(installation_path))
                 Directory.Delete(installation_path, true);
             Directory.CreateDirectory(installation_path);
             Directory.CreateDirectory(installation_path + "\\bin");
@@ -52,7 +52,7 @@ namespace Covariant_Script_Installer
             }
             prog.Maximum = installation_field.Count;
             prog.Value = 1;
-            foreach(Pair<string,string> info in installation_field)
+            foreach (Pair<string, string> info in installation_field)
             {
                 label.Text = "安装中(" + prog.Value.ToString() + "/" + prog.Maximum.ToString() + ")...";
                 DownloadFile(info.first, installation_path + info.second);

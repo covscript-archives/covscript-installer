@@ -121,6 +121,11 @@ namespace Covariant_Script_Installer
 
         public void install()
         {
+            if (checkBox1.Checked)
+            {
+                if (MessageBox.Show("确定要清理安装目录？\n这将会删除其中的所有文件，包括自定义扩展和日志。", "Covariant Script Installer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+                    return;
+            }
             Form3 form = new Form3();
             Installation inst = new Installation(form.label1, form.progressBar1)
             {
@@ -130,7 +135,7 @@ namespace Covariant_Script_Installer
             try
             {
                 form.Show();
-                inst.install();
+                inst.install(checkBox1.Checked);
                 Registry.ClassesRoot.CreateSubKey(".csc").SetValue("", "CovScriptGUI.Code", RegistryValueKind.String);
                 Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Code").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
                 Registry.ClassesRoot.CreateSubKey(".csp").SetValue("", "CovScriptGUI.Package", RegistryValueKind.String);
