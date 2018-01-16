@@ -23,15 +23,30 @@ namespace Covariant_Script_Installer
             {
                 string daemon_exe_path = Path.GetTempPath() + "\\CovScript_Installer[Daemon_Process_" + Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "].exe";
                 File.Copy(Application.ExecutablePath, daemon_exe_path, true);
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
+                System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
+                if (principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator))
                 {
-                    UseShellExecute = true,
-                    WorkingDirectory = Path.GetTempPath(),
-                    FileName = daemon_exe_path,
-                    Arguments = "--daemon",
-                    Verb = "runas"
-                };
-                Process.Start(startInfo);
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        WorkingDirectory = Path.GetTempPath(),
+                        FileName = daemon_exe_path,
+                        Arguments = "--daemon"
+                    };
+                    Process.Start(startInfo);
+                }
+                else
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        UseShellExecute = true,
+                        WorkingDirectory = Path.GetTempPath(),
+                        FileName = daemon_exe_path,
+                        Arguments = "--daemon",
+                        Verb = "runas"
+                    };
+                    Process.Start(startInfo);
+                }
                 Environment.Exit(0);
             }
         }
