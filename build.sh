@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$#" != "1" ]; then
+    echo "Wrong size of arguments."
+    exit
+fi
 function start ()
 {
     cd $1
@@ -31,7 +35,7 @@ cp -rf covscript/include covscript-darwin/ &
 cp -rf covscript/include covscript-sqlite/ &
 cp -rf covscript/include covscript-network/ &
 wait
-start covscript "sh ./make.sh" &
+start covscript "./make.sh --prefix=$1" &
 start covscript-regex "sh ./make.sh" &
 start covscript-darwin "sh ./make.sh" &
 start covscript-sqlite "sh ./make.sh" &
