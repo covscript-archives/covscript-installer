@@ -10,6 +10,7 @@ mkdir -p ./$2/$1/share/covscript
 cp -r ../build/bin ./$2/$1/
 cp -r ../build/imports ./$2/$1/share/covscript
 cp ../build-cache/covscript/examples/*.csp ./$2/$1/share/covscript/imports
+chmod -R 777 ./$2
 SIZE=$(du -s ../build | grep -o -E "[0-9]+")
 echo "Package: covscript">>./$2/DEBIAN/control
 echo "Version: $3">>./$2/DEBIAN/control
