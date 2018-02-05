@@ -20,6 +20,7 @@ function fetch_git ()
         cd ..
     fi
 }
+fetch_git cspkg &
 fetch_git covscript &
 fetch_git covscript-regex &
 fetch_git covscript-darwin &

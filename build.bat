@@ -1,6 +1,7 @@
 @echo off
 mkdir build-cache
 cd build-cache
+call:git_fetch cspkg
 call:git_fetch covscript
 call:git_fetch covscript-regex
 call:git_fetch covscript-darwin
