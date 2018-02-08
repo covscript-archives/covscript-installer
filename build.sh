@@ -26,15 +26,18 @@ fetch_git covscript-regex &
 fetch_git covscript-darwin &
 fetch_git covscript-sqlite &
 fetch_git covscript-network &
+fetch_git covscript-streams &
 wait
 cp -rf covscript/include covscript-regex/ &
 cp -rf covscript/include covscript-darwin/ &
 cp -rf covscript/include covscript-sqlite/ &
 cp -rf covscript/include covscript-network/ &
+cp -rf covscript/include covscript-streams/ &
 wait
 start covscript "./make.sh" &
 start covscript-regex "./make.sh" &
 start covscript-darwin "./make.sh" &
 start covscript-sqlite "./make.sh" &
 start covscript-network "./make.sh" &
+start covscript-streams "./make.sh" &
 wait

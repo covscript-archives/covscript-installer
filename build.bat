@@ -7,15 +7,18 @@ call:git_fetch covscript-regex
 call:git_fetch covscript-darwin
 call:git_fetch covscript-sqlite
 call:git_fetch covscript-network
+call:git_fetch covscript-streams
 xcopy /E /Y covscript\include covscript-regex\include\
 xcopy /E /Y covscript\include covscript-darwin\include\
 xcopy /E /Y covscript\include covscript-sqlite\include\
 xcopy /E /Y covscript\include covscript-network\include\
+xcopy /E /Y covscript\include covscript-streams\include\
 start /D covscript make.bat
 start /D covscript-regex make.bat
 start /D covscript-darwin make.bat
 start /D covscript-sqlite make.bat
 start /D covscript-network make.bat
+start /D covscript-streams make.bat
 goto:eof
 :git_fetch
 if exist %1% (

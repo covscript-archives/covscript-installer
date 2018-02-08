@@ -6,3 +6,4 @@ cp -rf covscript-regex/build ..
 cp -rf covscript-darwin/build ..
 cp -rf covscript-sqlite/build ..
 cp -rf covscript-network/build ..
+cp -rf covscript-streams/build ..
