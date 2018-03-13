@@ -30,7 +30,7 @@ namespace Covariant_Script_Installer
         public List<Pair<string, string>> installation_field = new List<Pair<string, string>>();
         public string installation_path;
         public string repo_url;
-        public void install(bool clean = false)
+        public void install(bool clean = false,bool force=false)
         {
             if (clean && Directory.Exists(installation_path))
                 Directory.Delete(installation_path, true);
@@ -43,7 +43,7 @@ namespace Covariant_Script_Installer
             Application.DoEvents();
             if (!Environment.Is64BitOperatingSystem)
                 MessageBox.Show("警告！您正在使用32位操作系统。\n由于32位操作系统无法支持SEH，Covariant Script的性能可能受限。\n要获得更好的体验，请升级至最新操作系统！", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            string[] urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem ? "/x64_urls.txt" : "/x86_urls.txt")).Split(';');
+            string[] urls = DownloadText(repo_url + (Environment.Is64BitOperatingSystem && !force ? "/x64_urls.txt" : "/x86_urls.txt")).Split(';');
             foreach (string url in urls)
             {
                 string[] info = url.Split('@');

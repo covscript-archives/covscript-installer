@@ -15,7 +15,7 @@ namespace Covariant_Script_Installer
                 textBox1.Text = Environment.GetEnvironmentVariable("COVSCRIPT_HOME");
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            textBox2.Text = "http://covariant.cn/cs";
+            textBox2.Text = "http://covscript.org";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -135,7 +135,7 @@ namespace Covariant_Script_Installer
             try
             {
                 form.Show();
-                inst.install(checkBox1.Checked);
+                inst.install(checkBox1.Checked, checkBox2.Checked);
                 Registry.ClassesRoot.CreateSubKey(".csc").SetValue("", "CovScriptGUI.Code", RegistryValueKind.String);
                 Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Code").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
                 Registry.ClassesRoot.CreateSubKey(".csp").SetValue("", "CovScriptGUI.Package", RegistryValueKind.String);
