@@ -15,7 +15,7 @@ namespace Covariant_Script_Installer
                 textBox1.Text = Environment.GetEnvironmentVariable("COVSCRIPT_HOME");
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            textBox2.Text = "http://covscript.org";
+            comboBox1.Text = "http://covariant.cn/cs/";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,7 +40,7 @@ namespace Covariant_Script_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "http://covariant.cn/cs";
+            comboBox1.Text = "http://covariant.cn/cs/";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Covariant_Script_Installer
             Installation inst = new Installation(null, null)
             {
                 installation_path = textBox1.Text,
-                repo_url = textBox2.Text
+                repo_url = comboBox1.Text
             };
             try
             {
@@ -130,7 +130,7 @@ namespace Covariant_Script_Installer
             Installation inst = new Installation(form.label1, form.progressBar1)
             {
                 installation_path = textBox1.Text,
-                repo_url = textBox2.Text
+                repo_url = comboBox1.Text
             };
             try
             {
