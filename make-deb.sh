@@ -8,6 +8,7 @@ cd deb-src
 mkdir -p ./$2/DEBIAN
 mkdir -p ./$2/$1/share/covscript
 cp -r ../build/bin ./$2/$1/
+cp -r ../build/lib ./$2/$1/
 cp -r ../build/imports ./$2/$1/share/covscript
 cp ../build-cache/covscript/examples/*.csp ./$2/$1/share/covscript/imports
 chmod -R 777 ./$2
