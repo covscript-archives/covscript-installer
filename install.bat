@@ -1,4 +1,5 @@
 @echo off
+rd /S /Q .\build
 mkdir build
 cd build-cache
 copy /Y cspkg\cspkg ..\build\bin\

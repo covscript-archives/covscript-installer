@@ -1,3 +1,4 @@
+rm -rf ./build
 mkdir -p build/bin
 cd build-cache
 cp cspkg/cspkg ../build/bin/
