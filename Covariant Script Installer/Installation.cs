@@ -86,10 +86,10 @@ namespace Covariant_Script_Installer
                 StreamReader sr = new StreamReader(myrp.GetResponseStream());
                 return sr.ReadToEnd();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 label.Text = "错误";
-                throw e;
+                throw;
             }
         }
         private void DownloadFile(string URL, string filename)
@@ -115,10 +115,10 @@ namespace Covariant_Script_Installer
                 so.Close();
                 st.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 label.Text = "错误";
-                throw e;
+                throw;
             }
         }
     }

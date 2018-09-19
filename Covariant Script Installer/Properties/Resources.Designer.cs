@@ -47,7 +47,7 @@ namespace Covariant_Script_Installer.Properties {
         }
         
         /// <summary>
-        ///   使用此强类型资源类，为所有资源查找
+        ///   重写当前线程的 CurrentUICulture 属性
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -71,18 +71,19 @@ namespace Covariant_Script_Installer.Properties {
         }
         
         /// <summary>
-        ///   查找类似                     GNU AFFERO GENERAL PUBLIC LICENSE
-        ///                       Version 3, 19 November 2007
+        ///   查找类似                                  Apache License
+        ///                           Version 2.0, January 2004
+        ///                        http://www.apache.org/licenses/
         ///
-        /// Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
-        /// Everyone is permitted to copy and distribute verbatim copies
-        /// of this license document, but changing it is not allowed.
+        ///   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
         ///
-        ///                            Preamble
+        ///   1. Definitions.
         ///
-        ///  The GNU Affero General Public License is a free, copyleft license for
-        ///software and other kinds of works, specifically designed to ensure
-        ///cooperation with the commun [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+        ///      and distribution as defined by Sections 1 through 9 of this document.
+        ///
+        ///      &quot;Licensor&quot; shall mean the copyright owner or entity authorized by
+        ///      the copyright owner that is [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string license {
             get {
