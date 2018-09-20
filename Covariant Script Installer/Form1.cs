@@ -8,11 +8,16 @@ namespace Covariant_Script_Installer
 {
     public partial class Form1 : Form
     {
+        bool exist = false;
         public Form1()
         {
             InitializeComponent();
             if (Environment.GetEnvironmentVariable("COVSCRIPT_HOME") != null)
+            {
                 textBox1.Text = Environment.GetEnvironmentVariable("COVSCRIPT_HOME");
+                button1.Text = "更新";
+                exist = true;
+            }
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
             comboBox1.Text = "http://covariant.cn/cs/";
@@ -25,7 +30,7 @@ namespace Covariant_Script_Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((new Form2(this)).ShowDialog() == DialogResult.OK)
+            if (exist ? true : (new Form2(this)).ShowDialog() == DialogResult.OK)
             {
                 this.Hide();
                 this.install();
@@ -172,11 +177,17 @@ namespace Covariant_Script_Installer
             }
             catch (Exception)
             {
-                MessageBox.Show("安装失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (exist)
+                    MessageBox.Show("更新失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("安装失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 form.Close();
                 return;
             }
-            MessageBox.Show("安装完毕", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (exist)
+                MessageBox.Show("更新完毕", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("安装完毕", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
             form.Close();
         }
 

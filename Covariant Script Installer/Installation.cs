@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Security;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Covariant_Script_Installer
@@ -12,7 +14,7 @@ namespace Covariant_Script_Installer
     {
         public _KeyT first;
         public _ValueT second;
-        public Pair(_KeyT key,_ValueT value)
+        public Pair(_KeyT key, _ValueT value)
         {
             first = key;
             second = value;
@@ -22,7 +24,7 @@ namespace Covariant_Script_Installer
     {
         private Label label;
         private ProgressBar prog;
-        public Installation(Label l,ProgressBar p)
+        public Installation(Label l, ProgressBar p)
         {
             label = l;
             prog = p;
@@ -30,7 +32,7 @@ namespace Covariant_Script_Installer
         public List<Pair<string, string>> installation_field = new List<Pair<string, string>>();
         public string installation_path;
         public string repo_url;
-        public void Install(bool clean = false,bool force=false)
+        public void Install(bool clean = false, bool force = false)
         {
             if (clean && Directory.Exists(installation_path))
                 Directory.Delete(installation_path, true);
@@ -46,11 +48,27 @@ namespace Covariant_Script_Installer
                 MessageBox.Show("警告！您正在使用32位操作系统。\n由于32位操作系统无法支持SEH，Covariant Script的性能可能受限。\n要获得更好的体验，请升级至最新操作系统！", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             string dest_url = DownloadText(repo_url + "/covscript_distribution/destination_url.txt");
             string[] urls = RemoveSpace(DownloadText(repo_url + (Environment.Is64BitOperatingSystem && !force ? "/covscript_distribution/windows_x86_64.txt" : "/covscript_distribution/windows_x86_32.txt"))).Split(';');
+            prog.Maximum = urls.Length;
+            prog.Value = 1;
             foreach (string url in urls)
             {
+                label.Text = "检索中(" + prog.Value.ToString() + "/" + prog.Maximum.ToString() + ")...";
                 string[] info = url.Split('@');
                 if (info.Length == 2)
-                    installation_field.Add(new Pair<string, string>(info[0], info[1]));
+                {
+                    string file_path = installation_path + info[1];
+                    if (!File.Exists(file_path) || GetMD5HashFromFile(file_path) != RemoveSpace(DownloadText(dest_url + info[0] + ".md5")))
+                        installation_field.Add(new Pair<string, string>(info[0], info[1]));
+                }
+                if (prog.Value < prog.Maximum)
+                    ++prog.Value;
+                Application.DoEvents();
+            }
+            if (installation_field.Count == 0)
+            {
+                label.Text = "完成";
+                MessageBox.Show("无需更新", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             prog.Maximum = installation_field.Count;
             prog.Value = 1;
@@ -67,6 +85,26 @@ namespace Covariant_Script_Installer
         public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
             return true;
+        }
+        private string GetMD5HashFromFile(string fileName)
+        {
+            try
+            {
+                FileStream file = new FileStream(fileName, System.IO.FileMode.Open);
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(file);
+                file.Close();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+            }
         }
         private string RemoveSpace(string str)
         {
