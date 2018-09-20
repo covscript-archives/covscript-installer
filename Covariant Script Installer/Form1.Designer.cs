@@ -35,6 +35,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,9 +57,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 32);
+            this.label1.Size = new System.Drawing.Size(321, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Covariant Script";
             // 
@@ -67,17 +68,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(16, 51);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 32);
+            this.label2.Size = new System.Drawing.Size(321, 40);
             this.label2.TabIndex = 0;
             this.label2.Text = "Online Installer";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(311, 12);
+            this.button1.Location = new System.Drawing.Point(415, 15);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
+            this.button1.Size = new System.Drawing.Size(100, 31);
             this.button1.TabIndex = 1;
             this.button1.Text = "安装";
             this.button1.UseVisualStyleBackColor = true;
@@ -85,9 +88,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(392, 45);
+            this.button2.Location = new System.Drawing.Point(523, 56);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 25);
+            this.button2.Size = new System.Drawing.Size(100, 31);
             this.button2.TabIndex = 4;
             this.button2.Text = "退出";
             this.button2.UseVisualStyleBackColor = true;
@@ -96,10 +100,11 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(10, 237);
+            this.linkLabel1.Location = new System.Drawing.Point(13, 296);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel1.Size = new System.Drawing.Size(125, 12);
+            this.linkLabel1.Size = new System.Drawing.Size(167, 15);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://covscript.org";
@@ -117,19 +122,35 @@
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.checkBox7);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(159, 76);
+            this.groupBox2.Location = new System.Drawing.Point(212, 95);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(314, 173);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(419, 216);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "设置";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "http://covariant.cn/cs/",
+            "http://covariant.cn/cs/fast/",
+            "http://covariant.cn/cs/backup/"});
+            this.comboBox1.Location = new System.Drawing.Point(8, 154);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(293, 23);
+            this.comboBox1.TabIndex = 13;
+            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(156, 42);
+            this.checkBox2.Location = new System.Drawing.Point(208, 52);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(156, 16);
+            this.checkBox2.Size = new System.Drawing.Size(195, 19);
             this.checkBox2.TabIndex = 12;
             this.checkBox2.Text = "强制安装32位可执行文件";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -137,18 +158,20 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(156, 20);
+            this.checkBox1.Location = new System.Drawing.Point(208, 25);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 16);
+            this.checkBox1.Size = new System.Drawing.Size(119, 19);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "清理安装目录";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(233, 122);
+            this.button3.Location = new System.Drawing.Point(311, 152);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 21);
+            this.button3.Size = new System.Drawing.Size(100, 26);
             this.button3.TabIndex = 10;
             this.button3.Text = "默认";
             this.button3.UseVisualStyleBackColor = true;
@@ -157,9 +180,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 107);
+            this.label4.Location = new System.Drawing.Point(5, 134);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(67, 15);
             this.label4.TabIndex = 0;
             this.label4.Text = "仓库地址";
             // 
@@ -168,18 +192,20 @@
             this.checkBox8.AutoSize = true;
             this.checkBox8.Checked = true;
             this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(6, 42);
+            this.checkBox8.Location = new System.Drawing.Point(8, 52);
+            this.checkBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(144, 16);
+            this.checkBox8.Size = new System.Drawing.Size(179, 19);
             this.checkBox8.TabIndex = 6;
             this.checkBox8.Text = "在桌面上创建快捷方式";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(233, 83);
+            this.button5.Location = new System.Drawing.Point(311, 104);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 21);
+            this.button5.Size = new System.Drawing.Size(100, 26);
             this.button5.TabIndex = 8;
             this.button5.Text = "选择";
             this.button5.UseVisualStyleBackColor = true;
@@ -187,9 +213,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 83);
+            this.textBox1.Location = new System.Drawing.Point(8, 104);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 21);
+            this.textBox1.Size = new System.Drawing.Size(293, 25);
             this.textBox1.TabIndex = 7;
             // 
             // checkBox7
@@ -197,9 +224,10 @@
             this.checkBox7.AutoSize = true;
             this.checkBox7.Checked = true;
             this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox7.Location = new System.Drawing.Point(6, 20);
+            this.checkBox7.Location = new System.Drawing.Point(8, 25);
+            this.checkBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(96, 16);
+            this.checkBox7.Size = new System.Drawing.Size(119, 19);
             this.checkBox7.TabIndex = 5;
             this.checkBox7.Text = "创建环境变量";
             this.checkBox7.UseVisualStyleBackColor = true;
@@ -207,9 +235,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 68);
+            this.label3.Location = new System.Drawing.Point(5, 85);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "安装路径";
             // 
@@ -221,18 +250,20 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Covariant_Script_Installer.Properties.Resources.covariant_script;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 78);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 106);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(188, 176);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(311, 45);
+            this.button4.Location = new System.Drawing.Point(415, 56);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 25);
+            this.button4.Size = new System.Drawing.Size(100, 31);
             this.button4.TabIndex = 2;
             this.button4.Text = "修复";
             this.button4.UseVisualStyleBackColor = true;
@@ -240,31 +271,20 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(392, 12);
+            this.button6.Location = new System.Drawing.Point(523, 15);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 25);
+            this.button6.Size = new System.Drawing.Size(100, 31);
             this.button6.TabIndex = 3;
             this.button6.Text = "卸载";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "http://covariant.cn/cs/",
-            "http://covariant.cn/cs/fast/",
-            "http://covariant.cn/cs/backup/"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(221, 20);
-            this.comboBox1.TabIndex = 13;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.ClientSize = new System.Drawing.Size(645, 326);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.pictureBox1);
@@ -276,6 +296,7 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

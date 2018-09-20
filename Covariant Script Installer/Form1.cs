@@ -16,6 +16,8 @@ namespace Covariant_Script_Installer
             {
                 textBox1.Text = Environment.GetEnvironmentVariable("COVSCRIPT_HOME");
                 button1.Text = "更新";
+                textBox1.Enabled = false;
+                button5.Enabled = false;
                 exist = true;
             }
             else
@@ -140,39 +142,46 @@ namespace Covariant_Script_Installer
             try
             {
                 form.Show();
-                inst.Install(checkBox1.Checked, checkBox2.Checked);
-                Registry.ClassesRoot.CreateSubKey(".csc").SetValue("", "CovScriptGUI.Code", RegistryValueKind.String);
-                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Code").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
-                Registry.ClassesRoot.CreateSubKey(".csp").SetValue("", "CovScriptGUI.Package", RegistryValueKind.String);
-                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Package").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
-                Registry.ClassesRoot.CreateSubKey(".cse").SetValue("", "CovScriptGUI.Extension", RegistryValueKind.String);
-                Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Extension").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
-                if (checkBox7.Checked)
+                if (!inst.Install(checkBox1.Checked, checkBox2.Checked, exist))
                 {
-                    Environment.SetEnvironmentVariable("COVSCRIPT_HOME", inst.installation_path, EnvironmentVariableTarget.User);
-                    Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\imports", EnvironmentVariableTarget.User);
-                    bool exist = false;
-                    string value = inst.installation_path + "\\bin";
-                    string env = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
-                    if (env != null)
+                    form.Close();
+                    return;
+                }
+                if (!exist)
+                {
+                    Registry.ClassesRoot.CreateSubKey(".csc").SetValue("", "CovScriptGUI.Code", RegistryValueKind.String);
+                    Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Code").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
+                    Registry.ClassesRoot.CreateSubKey(".csp").SetValue("", "CovScriptGUI.Package", RegistryValueKind.String);
+                    Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Package").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
+                    Registry.ClassesRoot.CreateSubKey(".cse").SetValue("", "CovScriptGUI.Extension", RegistryValueKind.String);
+                    Registry.ClassesRoot.CreateSubKey("CovScriptGUI.Extension").CreateSubKey("Shell\\Open\\Command").SetValue("", "\"" + inst.installation_path + "\\bin\\cs_gui.exe" + "\" \"%1\"", RegistryValueKind.ExpandString);
+                    if (checkBox7.Checked)
                     {
-                        foreach (string val in env.Split(';'))
+                        Environment.SetEnvironmentVariable("COVSCRIPT_HOME", inst.installation_path, EnvironmentVariableTarget.User);
+                        Environment.SetEnvironmentVariable("CS_IMPORT_PATH", inst.installation_path + "\\imports", EnvironmentVariableTarget.User);
+                        bool exist = false;
+                        string value = inst.installation_path + "\\bin";
+                        string env = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
+                        if (env != null)
                         {
-                            if (val == value)
+                            foreach (string val in env.Split(';'))
                             {
-                                exist = true;
-                                break;
+                                if (val == value)
+                                {
+                                    exist = true;
+                                    break;
+                                }
                             }
                         }
+                        if (!exist)
+                            Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\bin", EnvironmentVariableTarget.User);
                     }
-                    if (!exist)
-                        Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User) + ";" + inst.installation_path + "\\bin", EnvironmentVariableTarget.User);
-                }
-                if (checkBox8.Checked)
-                {
-                    create_shotcut(inst.installation_path + "\\bin\\cs_inst.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript Installer.lnk", "CovScript安装程序", "");
-                    create_shotcut(inst.installation_path + "\\bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "CovScript GUI", "");
-                    create_shotcut(inst.installation_path + "\\bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
+                    if (checkBox8.Checked)
+                    {
+                        create_shotcut(inst.installation_path + "\\bin\\cs_inst.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript Installer.lnk", "CovScript安装程序", "");
+                        create_shotcut(inst.installation_path + "\\bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "CovScript GUI", "");
+                        create_shotcut(inst.installation_path + "\\bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
+                    }
                 }
             }
             catch (Exception)

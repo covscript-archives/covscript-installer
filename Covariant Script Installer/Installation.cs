@@ -32,7 +32,7 @@ namespace Covariant_Script_Installer
         public List<Pair<string, string>> installation_field = new List<Pair<string, string>>();
         public string installation_path;
         public string repo_url;
-        public void Install(bool clean = false, bool force = false)
+        public bool Install(bool clean = false, bool force = false, bool exist = false)
         {
             if (clean && Directory.Exists(installation_path))
                 Directory.Delete(installation_path, true);
@@ -53,6 +53,7 @@ namespace Covariant_Script_Installer
             foreach (string url in urls)
             {
                 label.Text = "检索中(" + prog.Value.ToString() + "/" + prog.Maximum.ToString() + ")...";
+                Application.DoEvents();
                 string[] info = url.Split('@');
                 if (info.Length == 2)
                 {
@@ -68,19 +69,26 @@ namespace Covariant_Script_Installer
             {
                 label.Text = "完成";
                 MessageBox.Show("无需更新", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
+            }
+            else if (exist && MessageBox.Show("检索到" + installation_field.Count + "个更新，是否安装？", "Covariant Script Installer", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No)
+            {
+                label.Text = "完成";
+                return false;
             }
             prog.Maximum = installation_field.Count;
             prog.Value = 1;
             foreach (Pair<string, string> info in installation_field)
             {
                 label.Text = "安装中(" + prog.Value.ToString() + "/" + prog.Maximum.ToString() + ")...";
+                Application.DoEvents();
                 DownloadFile(dest_url + info.first, installation_path + info.second);
                 if (prog.Value < prog.Maximum)
                     ++prog.Value;
                 Application.DoEvents();
             }
             label.Text = "完成";
+            return true;
         }
         public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
