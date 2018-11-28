@@ -22,7 +22,7 @@ namespace Covariant_Script_Installer
             }
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            comboBox1.Text = "http://covariant.cn/cs/";
+            comboBox1.Text = "http://script.covariant.cn/";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -47,7 +47,7 @@ namespace Covariant_Script_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            comboBox1.Text = "http://covariant.cn/cs/";
+            comboBox1.Text = "http://script.covariant.cn/";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -184,12 +184,12 @@ namespace Covariant_Script_Installer
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 if (exist)
-                    MessageBox.Show("更新失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("更新失败:" + e.ToString(), "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    MessageBox.Show("安装失败", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("安装失败:" + e.ToString(), "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 form.Close();
                 return;
             }
