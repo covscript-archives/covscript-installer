@@ -9,13 +9,9 @@ call:git_fetch covscript-sqlite
 call:git_fetch covscript-network
 call:git_fetch covscript-streams
 call:git_fetch covscript-imgui
-xcopy /E /Y covscript\include covscript-regex\include\
-xcopy /E /Y covscript\include covscript-darwin\include\
-xcopy /E /Y covscript\include covscript-sqlite\include\
-xcopy /E /Y covscript\include covscript-network\include\
-xcopy /E /Y covscript\include covscript-streams\include\
-xcopy /E /Y covscript\include covscript-imgui\include\
-start /D covscript make.bat
+start /WAIT /D covscript make.bat
+start /WAIT /D covscript install.bat
+set CS_DEV_PATH=%cd%\covscript\csdev
 start /D covscript-regex make.bat
 start /D covscript-darwin make.bat
 start /D covscript-sqlite make.bat
