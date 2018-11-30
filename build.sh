@@ -2,7 +2,7 @@
 function start ()
 {
     cd $1
-    CS_DEV_PATH=../../covscript/csdev $2
+    CS_DEV_PATH=../../covscript/csdev bash $2
     cd ..
 }
 mkdir -p build-cache
