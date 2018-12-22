@@ -135,9 +135,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "http://script.covariant.cn/",
-            "http://script.covariant.cn/fast/",
-            "http://script.covariant.cn/backup/"});
+            "http://script.covariant.cn/"});
             this.comboBox1.Location = new System.Drawing.Point(8, 154);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
