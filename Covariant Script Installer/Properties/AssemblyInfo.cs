@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Covariant Script Installer")]
 [assembly: AssemblyDescription("Covariant Script Installer")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Covariant Studio")]
+[assembly: AssemblyCompany("Covariant Innovation")]
 [assembly: AssemblyProduct("Covariant Script Installer")]
-[assembly: AssemblyCopyright("Copyright © Michael Lee 2018")]
+[assembly: AssemblyCopyright("Copyright © Michael Lee 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

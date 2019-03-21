@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>covariant_script.ico</ApplicationIcon>
+    <ApplicationIcon>covscript_installer.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Covariant_Script_Installer.Program</StartupObject>
@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="covariant_script.ico" />
+    <Content Include="covscript_installer.ico" />
     <None Include="Resources\covariant_script.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
