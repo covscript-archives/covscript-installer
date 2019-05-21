@@ -22,12 +22,12 @@ namespace Covariant_Script_Installer
             }
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            comboBox1.Text = "http://script.covariant.cn/";
+            comboBox1.Text = "http://mirrors.covariant.cn/covscript/";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://covscript.org");
+            Process.Start("https://covscript.org");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,6 +36,13 @@ namespace Covariant_Script_Installer
             {
                 this.Hide();
                 this.install();
+                if (Environment.GetEnvironmentVariable("COVSCRIPT_HOME") != null)
+                {
+                    button1.Text = "更新";
+                    textBox1.Enabled = false;
+                    button5.Enabled = false;
+                    exist = true;
+                }
                 this.Show();
             }
         }
@@ -47,7 +54,7 @@ namespace Covariant_Script_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            comboBox1.Text = "http://script.covariant.cn/";
+            comboBox1.Text = "http://mirrors.covariant.cn/covscript/";
         }
 
         private void button4_Click(object sender, EventArgs e)
