@@ -36,13 +36,10 @@ namespace Covariant_Script_Installer
             {
                 this.Hide();
                 this.install();
-                if (Environment.GetEnvironmentVariable("COVSCRIPT_HOME") != null)
-                {
-                    button1.Text = "更新";
-                    textBox1.Enabled = false;
-                    button5.Enabled = false;
-                    exist = true;
-                }
+                button1.Text = "更新";
+                textBox1.Enabled = false;
+                button5.Enabled = false;
+                exist = true;
                 this.Show();
             }
         }
