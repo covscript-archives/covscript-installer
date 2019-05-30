@@ -120,7 +120,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="covariant_script.ico" />
     <Content Include="covscript_installer.ico" />
     <None Include="Resources\covariant_script.png" />
   </ItemGroup>
