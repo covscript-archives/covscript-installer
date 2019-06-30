@@ -107,7 +107,7 @@
             this.linkLabel1.Size = new System.Drawing.Size(175, 15);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://covscript.org";
+            this.linkLabel1.Text = "https://covscript.org.cn";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // groupBox2
@@ -135,7 +135,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "http://mirrors.covariant.cn/covscript/"});
+            "http://mirrors.covscript.org.cn.cn/"});
             this.comboBox1.Location = new System.Drawing.Point(8, 154);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
