@@ -100,11 +100,11 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(13, 296);
+            this.linkLabel1.Location = new System.Drawing.Point(11, 296);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel1.Size = new System.Drawing.Size(175, 15);
+            this.linkLabel1.Size = new System.Drawing.Size(199, 15);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://covscript.org.cn";
@@ -135,8 +135,8 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "http://mirrors.covscript.org.cn.cn/"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 154);
+            "http://mirrors.covscript.org.cn/"});
+            this.comboBox1.Location = new System.Drawing.Point(5, 152);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(293, 23);
@@ -166,7 +166,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(311, 152);
+            this.button3.Location = new System.Drawing.Point(311, 150);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 26);
@@ -178,7 +178,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 134);
+            this.label4.Location = new System.Drawing.Point(5, 133);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 15);
@@ -190,7 +190,7 @@
             this.checkBox8.AutoSize = true;
             this.checkBox8.Checked = true;
             this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(8, 52);
+            this.checkBox8.Location = new System.Drawing.Point(5, 52);
             this.checkBox8.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(179, 19);
@@ -200,7 +200,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(311, 104);
+            this.button5.Location = new System.Drawing.Point(311, 103);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 26);
@@ -211,7 +211,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 104);
+            this.textBox1.Location = new System.Drawing.Point(5, 104);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(293, 25);
@@ -222,7 +222,7 @@
             this.checkBox7.AutoSize = true;
             this.checkBox7.Checked = true;
             this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox7.Location = new System.Drawing.Point(8, 25);
+            this.checkBox7.Location = new System.Drawing.Point(5, 25);
             this.checkBox7.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(119, 19);

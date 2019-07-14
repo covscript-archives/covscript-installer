@@ -22,7 +22,7 @@ namespace Covariant_Script_Installer
             }
             else
                 textBox1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\CovScript";
-            comboBox1.Text = "http://mirrors.covscript.org.cn.cn/";
+            comboBox1.Text = "http://mirrors.covscript.org.cn/";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -51,7 +51,7 @@ namespace Covariant_Script_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            comboBox1.Text = "http://mirrors.covscript.org.cn.cn/";
+            comboBox1.Text = "http://mirrors.covscript.org.cn/";
         }
 
         private void button4_Click(object sender, EventArgs e)
