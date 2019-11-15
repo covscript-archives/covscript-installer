@@ -119,7 +119,7 @@ namespace Covariant_Script_Installer
                 {
                     create_shotcut(inst.installation_path + "\\bin\\cs_inst.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript Installer.lnk", "CovScript安装程序", "");
                     create_shotcut(inst.installation_path + "\\bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "CovScript GUI", "");
-                    create_shotcut(inst.installation_path + "\\bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
+                    create_shotcut(inst.installation_path + "\\bin\\cs.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
                 }
             }
             catch (Exception)
@@ -184,7 +184,7 @@ namespace Covariant_Script_Installer
                     {
                         create_shotcut(inst.installation_path + "\\bin\\cs_inst.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript Installer.lnk", "CovScript安装程序", "");
                         create_shotcut(inst.installation_path + "\\bin\\cs_gui.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript GUI.lnk", "CovScript GUI", "");
-                        create_shotcut(inst.installation_path + "\\bin\\cs_repl.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
+                        create_shotcut(inst.installation_path + "\\bin\\cs.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\CovScript REPL.lnk", "CovScript交互式解释器", "--wait-before-exit --import-path \"" + inst.installation_path + "\\imports\" --log-path \"" + inst.installation_path + "\\logs\\cs_repl_runtime.log\"");
                     }
                 }
             }
