@@ -45,7 +45,11 @@ namespace Covariant_Script_Installer
             label.Text = "获取组件信息中，请稍候...";
             Application.DoEvents();
             if (!Environment.Is64BitOperatingSystem)
-                MessageBox.Show("警告！您正在使用32位操作系统。\n由于32位操作系统无法支持SEH，Covariant Script的性能可能受限。\n要获得更好的体验，请升级至最新操作系统！", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                // MessageBox.Show("警告！您正在使用32位操作系统。\n由于32位操作系统无法支持SEH，Covariant Script的性能可能受限。\n要获得更好的体验，请升级至最新操作系统！", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("抱歉，自2020年12月起，Covariant Script 不再支持32位操作系统。\n要获得更好的体验，请升级至最新操作系统！", "Covariant Script Installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
             string dest_url = DownloadText(repo_url + "/covscript_distribution/destination_url.txt");
             string[] urls = RemoveSpace(DownloadText(repo_url + (Environment.Is64BitOperatingSystem && !force ? "/covscript_distribution/windows_x86_64.txt" : "/covscript_distribution/windows_x86_32.txt"))).Split(';');
             prog.Maximum = urls.Length;
